@@ -23,5 +23,6 @@
 @property (nonatomic, strong) User *retweetedBy;
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
