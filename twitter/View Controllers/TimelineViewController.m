@@ -6,10 +6,13 @@
 //  Copyright © 2018 Emerson Malca. All rights reserved.
 //
 
-#import "TimelineViewController.h"
+
 #import "APIManager.h"
-#import "TweetCell.h"
+#import "AppDelegate.h"
 #import "ComposeViewController.h"
+#import "LoginViewController.h"
+#import "TweetCell.h"
+#import "TimelineViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -86,4 +89,11 @@
 }
 
 
+- (IBAction)tapDidLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+}
 @end
