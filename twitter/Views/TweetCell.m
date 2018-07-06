@@ -31,6 +31,8 @@
     self.nameLabel.text = tweet.user.name;
     
     [self.profilePic setImageWithURL:tweet.user.profilePicURL];
+    self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2;
+    
     [self.likeButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.favoriteCount] forState:UIControlStateNormal];
     [self.retweetButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.retweetCount] forState:UIControlStateNormal];
     
