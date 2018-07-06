@@ -14,7 +14,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -30,9 +29,10 @@
     self.dateLabel.text = tweet.createdAt;
     self.screenNameLabel.text = tweet.user.screenName;
     self.nameLabel.text = tweet.user.name;
-    self.retweetCountLabel.text = [NSString stringWithFormat:@"%i", tweet.retweetCount];
-    self.likesCountLabel.text = [NSString stringWithFormat:@"%i", tweet.favoriteCount];
+    
     [self.profilePic setImageWithURL:tweet.user.profilePicURL];
+    [self.likeButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.favoriteCount] forState:UIControlStateNormal];
+    [self.retweetButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.retweetCount] forState:UIControlStateNormal];
     
 }
 
@@ -53,7 +53,6 @@
                 NSLog(@"Favorite Tweet Success!: %@", tweet.tweetText);
             }
         }];
-        
     } else {
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
@@ -99,17 +98,13 @@
                 NSLog(@"Unretweet Successful!: %@", tweet.tweetText);
             }
         }];
-        
-        
     }
-    
     [self refreshData];
-    
 }
 
 - (void)refreshData{
-    self.likesCountLabel.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
-    self.retweetCountLabel.text = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+    [self.likeButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.favoriteCount] forState:UIControlStateNormal];
+    [self.retweetButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.retweetCount] forState:UIControlStateNormal];
 }
 
 @end
