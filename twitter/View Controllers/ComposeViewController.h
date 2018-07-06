@@ -14,7 +14,6 @@
 
 - (void)didTweet:(Tweet *)tweet;
 
-
 @end
 
 @interface ComposeViewController : UIViewController

@@ -30,7 +30,6 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    
     [self fetchTimeline];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -38,8 +37,8 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
+// Get timeline
 - (void)fetchTimeline {
-    // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -58,7 +57,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -88,7 +86,7 @@
     [self fetchTimeline];
 }
 
-
+// Action for tapping the Logout Button
 - (IBAction)tapDidLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     

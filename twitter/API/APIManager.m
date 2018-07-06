@@ -62,6 +62,7 @@ static NSString * const consumerSecret = @"pglV6pI6uZxc0tDn2GIjtxISmG2d93o5AaVGB
    }];
 }
 
+// Request for posting a tweet
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = @"1.1/statuses/update.json";
     NSDictionary *parameters = @{@"status": text};
@@ -74,6 +75,7 @@ static NSString * const consumerSecret = @"pglV6pI6uZxc0tDn2GIjtxISmG2d93o5AaVGB
     }];
 }
 
+// Request for liking/favoriting a tweet
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = @"1.1/favorites/create.json";
     NSDictionary *parameters = @{@"id": tweet.idStr};
@@ -86,6 +88,7 @@ static NSString * const consumerSecret = @"pglV6pI6uZxc0tDn2GIjtxISmG2d93o5AaVGB
     }];
 }
 
+// Request for unliking/unfavoriting a tweet
 - (void)destroy:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = @"1.1/favorites/destroy.json";
     NSDictionary *parameters = @{@"id": tweet.idStr};
@@ -98,6 +101,7 @@ static NSString * const consumerSecret = @"pglV6pI6uZxc0tDn2GIjtxISmG2d93o5AaVGB
     }];
 }
 
+// Request for retweeting a tweet
 - (void)retweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.idStr];
     NSDictionary *parameters = @{@"id": tweet.idStr};
@@ -110,6 +114,7 @@ static NSString * const consumerSecret = @"pglV6pI6uZxc0tDn2GIjtxISmG2d93o5AaVGB
     }];
 }
 
+// Request for unretweeting a tweet
 - (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/unretweet/%@.json", tweet.idStr];
     NSDictionary *parameters = @{@"id": tweet.idStr};
