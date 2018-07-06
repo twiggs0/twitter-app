@@ -28,7 +28,7 @@
     self.dateLabel.text = tweet.createdAt;
     self.tweetTextLabel.text = tweet.tweetText;
     self.nameLabel.text = tweet.user.name;
-    self.screenNameLabel.text = tweet.user.screenName;
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     
     // Creates a circle frame for the profile pic
     [self.profilePic setImageWithURL:tweet.user.profilePicURL];
